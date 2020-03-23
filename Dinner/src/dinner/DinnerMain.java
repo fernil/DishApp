@@ -31,12 +31,15 @@ public class DinnerMain {
 				removeDish();
 				break;
 			case 5:
-				dish.printList();
+				searchFor();
 				break;
 			case 6:
-				dish.printDinner();
+				dish.printList();
 				break;
 			case 7:
+				dish.printDinner();
+				break;
+			case 8:
 				dish.printFDays();
 				break;
 			default:
@@ -53,9 +56,10 @@ public class DinnerMain {
 		System.out.println("2 - Add a dish to the list");
 		System.out.println("3 - Update a dish on the list");
 		System.out.println("4 - Remove a dish from the list");
-		System.out.println("5 - Print the list of your dishes");
-		System.out.println("6 - Print a dish for one day");
-		System.out.println("7 - Print the list of the dishes for next five days");
+		System.out.println("5 - Search for dish on the list");
+		System.out.println("6 - Print the list of your dishes");
+		System.out.println("7 - Print a dish for one day");
+		System.out.println("8 - Print the list of the dishes for next five days");
 	}
 
 	public static void addDish() {
@@ -75,5 +79,14 @@ public class DinnerMain {
 		System.out.println("Enter the position of the dish, which you want to remove:");
 		dish.removeDish(scanner.nextInt());
 	}
-
+	public static void searchFor() {
+		System.out.println("Enter the name of the dish you looking for:");		
+		String name = scanner.nextLine();
+		if(!dish.findDish(name)) {
+			System.out.println("The given dish isn't on the list. Do you want to add it?");		
+			if(scanner.nextLine().equals("yes")) {
+				dish.addDish(name);
+			}
+		}
+	}
 }

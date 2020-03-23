@@ -15,9 +15,13 @@ public class Dish {
 	}
 
 	public void updateDish(int position, String dish) {
+		if (position > 0 && position <= dishList.size()) {
 		dishList.set(position - 1, dish);
 		System.out.println(dish + " has been succesful changed.");
+		}
+		System.out.println("Wrong number, you have " + dishList.size() + " position.");
 	}
+	
 
 	public void removeDish(int position) {
 		if (position > 0 && position <= dishList.size()) {
@@ -32,7 +36,7 @@ public class Dish {
 		if (exists) {
 			int position = dishList.indexOf(dish);
 			System.out
-					.println("The dish is already on the list at " + (position + 1) + " position. Write another one.");
+					.println("The dish is on the list at " + (position + 1) + " position.");
 		}
 		return exists;
 	}
