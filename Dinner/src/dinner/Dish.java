@@ -15,10 +15,10 @@ public class Dish {
 	}
 
 	public void updateDish(int position, String dish) {
-		if (position >= 0 && position <= dishList.size()) {
+		if (position > 0 && position <= dishList.size()) {
 		dishList.set(position - 1, dish);
-		System.out.println(dish + " has been succesful changed.");
-		}
+		System.out.println("Position " + position +" has been succesful changed.");
+		}else 
 		System.out.println("Wrong number, you have " + dishList.size() + " position.");
 	}
 	
@@ -27,7 +27,7 @@ public class Dish {
 		if (position > 0 && position <= dishList.size()) {
 			dishList.remove(position - 1);
 			System.out.println("Position " + position + " has been succesful removed.");
-		}
+		}else 
 		System.out.println("Wrong number, you have " + dishList.size() + " positions.");
 	}
 
