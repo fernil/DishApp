@@ -15,7 +15,7 @@ public class Dish {
 	}
 
 	public void updateDish(int position, String dish) {
-		if (position > 0 && position <= dishList.size()) {
+		if (position >= 0 && position <= dishList.size()) {
 		dishList.set(position - 1, dish);
 		System.out.println(dish + " has been succesful changed.");
 		}
@@ -28,7 +28,7 @@ public class Dish {
 			dishList.remove(position - 1);
 			System.out.println("Position " + position + " has been succesful removed.");
 		}
-		System.out.println("Wrong number, you have " + dishList.size() + " position.");
+		System.out.println("Wrong number, you have " + dishList.size() + " positions.");
 	}
 
 	public boolean findDish(String dish) {
@@ -36,7 +36,7 @@ public class Dish {
 		if (exists) {
 			int position = dishList.indexOf(dish);
 			System.out
-					.println("The dish is on the list at " + (position + 1) + " position.");
+					.println("The dish is on the list at " + (position + 1) + " positions.");
 		}
 		return exists;
 	}
@@ -59,7 +59,7 @@ public class Dish {
 	public void printFDays() {
 		for (int i = 1; i < 6; i++) {
 			System.out.println("On the " + i + " day you should eat " + dishList.get(random.nextInt(dishList.size()))
-					+ " for dinner");
+					+ " for dinner.");
 		}
 	}
 }

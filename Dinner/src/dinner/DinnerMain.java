@@ -1,5 +1,6 @@
 package dinner;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class DinnerMain {
@@ -9,42 +10,47 @@ public class DinnerMain {
 	public static void main(String[] args) {
 		boolean quit = false;
 		printActions();
-		while (!quit) {
-			System.out.println("Enter number to choose action (1 to see them all):");
-			int action = scanner.nextInt();
-			scanner.nextLine();
-			switch (action) {
-			case 0:
-				System.out.println("Application has been closed.");
-				quit = true;
-				break;
-			case 1:
-				printActions();
-				break;
-			case 2:
-				addDish();
-				break;
-			case 3:
-				updateDish();
-				break;
-			case 4:
-				removeDish();
-				break;
-			case 5:
-				searchFor();
-				break;
-			case 6:
-				dish.printList();
-				break;
-			case 7:
-				dish.printDinner();
-				break;
-			case 8:
-				dish.printFDays();
-				break;
-			default:
-				System.out.println("Use proper numbers!");
+		try {
+			while (!quit) {
+				System.out.println("Enter number to choose action (1 to see them all):");
+				int action = scanner.nextInt();
+				scanner.nextLine();
+				switch (action) {
+				case 0:
+					System.out.println("Application has been closed.");
+					quit = true;
+					break;
+				case 1:
+					printActions();
+					break;
+				case 2:
+					addDish();
+					break;
+				case 3:
+					updateDish();
+					break;
+				case 4:
+					removeDish();
+					break;
+				case 5:
+					searchFor();
+					break;
+				case 6:
+					dish.printList();
+					break;
+				case 7:
+					dish.printDinner();
+					break;
+				case 8:
+					dish.printFDays();
+					break;
+				default:
+					System.out.println("Use proper numbers!");
+				}
 			}
+		} catch (InputMismatchException e) {
+			System.out.println("Invalid input.");
+
 		}
 
 	}
@@ -79,12 +85,13 @@ public class DinnerMain {
 		System.out.println("Enter the position of the dish, which you want to remove:");
 		dish.removeDish(scanner.nextInt());
 	}
+
 	public static void searchFor() {
-		System.out.println("Enter the name of the dish you looking for:");		
+		System.out.println("Enter the name of the dish you looking for:");
 		String name = scanner.nextLine();
-		if(!dish.findDish(name)) {
-			System.out.println("The given dish isn't on the list. Do you want to add it?");		
-			if(scanner.nextLine().equals("yes")) {
+		if (!dish.findDish(name)) {
+			System.out.println("The given dish isn't on the list. Do you want to add it?");
+			if (scanner.nextLine().equals("yes")) {
 				dish.addDish(name);
 			}
 		}
