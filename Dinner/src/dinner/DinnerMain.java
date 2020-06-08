@@ -1,6 +1,5 @@
 package dinner;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class DinnerMain {
@@ -10,6 +9,7 @@ public class DinnerMain {
 	public static void main(String[] args) {
 		boolean quit = false;
 		printActions();
+		while(true) {
 		try {
 			while (!quit) {
 				System.out.println("Enter number to choose action (1 to see them all):");
@@ -48,9 +48,11 @@ public class DinnerMain {
 					System.out.println("Use proper numbers!");
 				}
 			}
-		} catch (InputMismatchException e) {
-			System.out.println("Invalid input.");
+		} catch (Exception e) {
+			scanner.nextLine();
+			System.out.println("Invalid input. Please write proper value.");
 
+		}
 		}
 
 	}

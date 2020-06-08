@@ -10,14 +10,14 @@ public class Dish {
 	public void addDish(String dish) {
 		if (!findDish(dish)) {
 			dishList.add(dish);
-			System.out.println(dish + " has been succesful added.");
+			System.out.println(dish + " has been succesfully added.");
 		}
 	}
 
 	public void updateDish(int position, String dish) {
 		if (position > 0 && position <= dishList.size()) {
 		dishList.set(position - 1, dish);
-		System.out.println("Position " + position +" has been succesful changed.");
+		System.out.println("Position " + position +" has been succesfully changed.");
 		}else 
 		System.out.println("Wrong number, you have " + dishList.size() + " position.");
 	}
@@ -26,7 +26,7 @@ public class Dish {
 	public void removeDish(int position) {
 		if (position > 0 && position <= dishList.size()) {
 			dishList.remove(position - 1);
-			System.out.println("Position " + position + " has been succesful removed.");
+			System.out.println("Position " + position + " has been succesfully removed.");
 		}else 
 		System.out.println("Wrong number, you have " + dishList.size() + " positions.");
 	}
