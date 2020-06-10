@@ -1,11 +1,23 @@
 package dinner;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 public class Dish {
-	private ArrayList<String> dishList = new ArrayList<String>();
+	private List<String> dishList = new ArrayList<>();
+
 	private Random random = new Random();
+
+	public List<String> getDishList() {
+		return dishList;
+	}
+
+	public void setDishList(List<String> dishList) {
+		this.dishList = dishList;
+	}
 
 	public void addDish(String dish) {
 		if (!findDish(dish)) {
@@ -16,27 +28,25 @@ public class Dish {
 
 	public void updateDish(int position, String dish) {
 		if (position > 0 && position <= dishList.size()) {
-		dishList.set(position - 1, dish);
-		System.out.println("Position " + position +" has been succesfully changed.");
-		}else 
-		System.out.println("Wrong number, you have " + dishList.size() + " position.");
+			dishList.set(position - 1, dish);
+			System.out.println("Position " + position + " has been succesfully changed.");
+		} else
+			System.out.println("Wrong number, you have " + dishList.size() + " position.");
 	}
-	
 
 	public void removeDish(int position) {
 		if (position > 0 && position <= dishList.size()) {
 			dishList.remove(position - 1);
 			System.out.println("Position " + position + " has been succesfully removed.");
-		}else 
-		System.out.println("Wrong number, you have " + dishList.size() + " positions.");
+		} else
+			System.out.println("Wrong number, you have " + dishList.size() + " positions.");
 	}
 
 	public boolean findDish(String dish) {
 		boolean exists = dishList.contains(dish);
 		if (exists) {
 			int position = dishList.indexOf(dish);
-			System.out
-					.println("The dish is on the list at " + (position + 1) + " positions.");
+			System.out.println("The dish is on the list at " + (position + 1) + " positions.");
 		}
 		return exists;
 	}
@@ -57,9 +67,14 @@ public class Dish {
 	}
 
 	public void printFDays() {
+		Set<String> fDaysSet = new HashSet<>();
+		String dinner = "";
 		for (int i = 1; i < 6; i++) {
-			System.out.println("On the " + i + " day you should eat " + dishList.get(random.nextInt(dishList.size()))
-					+ " for dinner.");
+			dinner = dishList.get(random.nextInt(dishList.size()));
+			if (fDaysSet.add(dinner)) {
+				System.out.println("On the " + i + " day you should eat " + dinner + " for dinner.");
+			} else
+				i--;
 		}
 	}
 }
